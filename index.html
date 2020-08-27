@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>VueJs Introduction</title>
+      
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/> 
+      <style>
+          .data-blk {
+              color: white;
+              font-size: 18px;
+              height: 100px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+          }
+          .data-blk p {
+              margin-bottom:0;
+              font-weight: 600;
+              font-size:28px;
+              color:#800080;
+          }
+              
+          @media screen and (min-width: 320px) {
+              .data-blk {
+                  color: white;
+                  font-size: 18px;
+                  height: 40px;
+                  margin-bottom: 10px;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+              }
+              .colorOne {
+                  background-color: #D3D3D3;
+                  border-left: solid 5px #000000;
+              }
+              .colorTwo {
+                  background-color: #D3D3D3;
+                  border-left: solid 5px #333333
+              }
+              .colorThree {
+                  background-color: #D3D3D3;
+                  border-left: solid 5px #FFFFFF
+              }
+              .colorFour {
+                  background-color: #D3D3D3;
+                  border-left: solid 5px #EFEFEF
+              }
+              .colorFive {
+                  background-color: #D3D3D3;
+                  border-left: solid 5px #72C3DC
+              }
+              .colorSix {
+                  background-color: #D3D3D3;
+                  border-left: solid 5px #2B8EAD
+              }
+              .colorSeven {
+                  background-color: #D3D3D3;
+                  border-left: solid 5px #6F98A8
+              }
+              .colorEight {
+                  background-color: #D3D3D3;
+                  border-left: solid 5px #BFBFBF
+              }
+              .colorNine {
+                  background-color: #D3D3D3;
+                  border-left: solid 5px #2F454E
+              }
+          }
+          @media screen and (min-width: 960px) {
+              .data-blk {
+                  height: 150px;
+              }
+              .colorOne {
+                  background-color: #000000
+              }
+              .colorTwo {
+                  background-color: #333333
+              }
+              .colorThree {
+                  background-color: #FFFFFF
+              }
+              .colorFour {
+                  background-color: #EFEFEF
+              }
+              .colorFive {
+                  background-color: #72C3DC
+              }
+              .colorSix {
+                  background-color: #2B8EAD
+              }
+              .colorSeven {
+                  background-color: #6F98A8
+              }
+              .colorEight {
+                  background-color: #BFBFBF
+              }
+              .colorNine {
+                  background-color: #2F454E
+              }
+          }
+      </style>
+      <script type = "text/javascript" src = "https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.min.js">
+      </script>
+   </head>
+   <body>
+       <section id="app" class="container-fluid">
+           <h1>{{message}}</h1>
+           <div class="row">
+               <div class="col-12 col-md-8 order-12 order-md-1">
+                   <div class="row">
+                       <div class="col-12 col-md-4 data-blk" v-for="item in dataJson"  v-bind:class="item.style">
+                            <p>{{item.data}}</p>
+                       </div>
+                   </div>
+               </div>
+               <div class="col-12 col-md-4 order-1 order-md-12 mb-2">
+                   <input type="button" class="btn btn-primary" value="Shuffle" v-on:click="shuffle(dataJson)"/>
+                   <input type="button" class="btn btn-primary" value="Sort" v-on:click="sortArray(dataJson)"/>
+               </div>
+           </div>
+       </section>
+      <script type = "text/javascript">
+         var vue_det = new Vue({
+            el: '#app',
+            data: {
+                dataJson:[{data: 1, style:'colorOne'},{data: 2,style:'colorTwo'},{data: 3,style:'colorThree'},{data: 4, style:'colorFour'},{data: 5,style:'colorFive'},{data: 6,style :'colorSix'},{data: 7,style:'colorSeven'},{data: 8,style:'colorEight'},{data: 9,style:'colorNine'}],
+               message: 'Shuffle and Sort Example'
+            },
+            methods:{
+                shuffle: function (array) {
+                    array.sort(() => Math.random() - 0.5);
+                },
+                sortArray: function (array) {
+                    array.sort(function(a, b){return a.data - b.data});
+                }
+            }
+         });
+      </script>
+   </body>
+</html>
